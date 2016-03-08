@@ -25,7 +25,8 @@ class LinksController < ApplicationController
   # POST /links
   # POST /links.json
   def create
-    @link = current_user.build(link_params)
+    @link = current_user.links.build(link_params)#this will use a devise method to attach the users ID to their newly created link
+  
 
     respond_to do |format|
       if @link.save
@@ -72,4 +73,5 @@ class LinksController < ApplicationController
     def link_params
       params.require(:link).permit(:title, :link)
     end
-end
+  end 
+#end
